@@ -139,7 +139,7 @@ oponenteCordopatri(0):-
 
 oponenteCordopatri(1):-
         meuPersonagem(X),
-        combate(X,giusepinnaCordopatri).
+        combate(X,mariellaCordopatri).
 
 oponenteCordopatri(2):-
         meuPersonagem(X),
@@ -256,6 +256,7 @@ decisao(b):-
         write('Voce sem doh nem piedade desfere um golpe fatal... definitivamente ele nao ira mais te incomodar'),nl,nl,fim.
 
 fim :-
+sleep(3),
 write('.~NNMMMMNN$.MMN. ~MM?.:MMNDNNN$    .ZMMMDNNN:.8MMD..MMM:IMMMDMMM=. '),nl,
 write('   .7MMM   .MMM?+IMM?.:MM+         .ZMMD     .8MMMM:MMM:IMMM..IMM: '),nl,
 write('   .7MMM   .MMMMMMMM?.:MMMMMMM=    .ZMMMMMMM..8M$DMMMMM:IMMM..+MM~ '),nl,
@@ -319,40 +320,4 @@ filho(X,Y):- X eh homem, ascendente(Y,X).
 filha(X,Y):- X eh mulher, ascendente(Y,X).
 neto(X,Y):- X eh homem, (avo_f(Y,X);avo_m(Y,X)).
 neta(X,Y):- X eh mulher, (avo_f(Y,X);avo_m(Y,X)).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
