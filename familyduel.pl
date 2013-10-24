@@ -63,6 +63,11 @@ membro(vitoCorleone) :-
         write('Vito Corleone possui uma pistola Glock e 150 Pontos de Vida'),nl,
         assert(meuPersonagem(vitoCorleone)),
 	write('Escolha sua arma:'),nl,
+	write('arma(porrada).'),nl,
+        write('arma(colt).'),nl,
+        write('arma(glok).'),nl,
+	write('arma(ak-47).'),nl,
+	write('arma(fuzilar15).'),nl,
         oponente(cordopatri),
         nl.
 
@@ -72,6 +77,11 @@ membro(carmellaCorleone) :-
         write('Carmela Corleone possui uma faca e 200 pontos de vida'),nl,
         assert(meuPersonagem(carmellaCorleone)),
 	write('Escolha sua arma:'),nl,
+	write('arma(porrada).'),nl,
+        write('arma(colt).'),nl,
+        write('arma(glok).'),nl,
+	write('arma(ak-47).'),nl,
+	write('arma(fuzilar15).'),nl,
         oponente(cordopatri),
         nl.
 
@@ -81,6 +91,11 @@ membro(michaelCorleone) :-
         write('Michael Corleone possui uma pistola Colt e 100 pontos de vida'),nl,
         assert(meuPersonagem(michaelCorleone)),
 	write('Escolha sua arma:'),nl,
+	write('arma(porrada).'),nl,
+        write('arma(colt).'),nl,
+        write('arma(glok).'),nl,
+	write('arma(ak-47).'),nl,
+	write('arma(fuzilar15).'),nl,
         oponente(cordopatri),
         nl.
 
@@ -90,6 +105,11 @@ membro(arcangeloCordopatri) :-
         write('Arcangelo Cordopatri possui uma AK-47 e 100 pontos de vida'),nl,
         assert(meuPersonagem(arcangeloCordopatri)),
 	write('Escolha sua arma:'),nl,
+	write('arma(porrada).'),nl,
+        write('arma(colt).'),nl,
+        write('arma(glok).'),nl,
+	write('arma(ak-47).'),nl,
+	write('arma(fuzilar15).'),nl,
         oponente(corleone),
         nl.
 
@@ -99,6 +119,11 @@ membro(giuseppinaCordopatri) :-
         write('Giuseppina Cordopatri possui uma pistola Colt e 150 pontos de vida'),nl,
         assert(meuPersonagem(giuseppinaCordopatri)),
 	write('Escolha sua arma:'),nl,
+	write('arma(porrada).'),nl,
+        write('arma(colt).'),nl,
+        write('arma(glok).'),nl,
+	write('arma(ak-47).'),nl,
+	write('arma(fuzilar15).'),nl,
         oponente(corleone),
         nl.
 
@@ -108,20 +133,44 @@ membro(mariellaCordopatri) :-
         write('Mariella Cordopatri luta com a mao e possui 300 pontos de vida'),nl,
         assert(meuPersonagem(mariellaCordopatri)),
 	write('Escolha sua arma:'),nl,
+	write('arma(porrada).'),nl,
+        write('arma(colt).'),nl,
+        write('arma(glok).'),nl,
+	write('arma(ak-47).'),nl,
+	write('arma(fuzilar15).'),nl,
         oponente(corleone),
         nl.
 
 
 arma(porrada) :-
         nl,
-	write('Escolha sua arma:'),nl,
-        write('Voce eh Vito Corleone, conhecido como Don Corleone, poderoso chefao da mafia Corleone'),nl,
-        write('Vito Corleone possui uma pistola Glock e 150 Pontos de Vida'),nl,
-        assert(meuPersonagem(vitoCorleone)),
-        oponente(cordopatri),
+        write('luta com as maos livres'),nl,
+        write('Com essa escolha o dano causado e de: 10 pontos de vida'),nl,
         nl.
 
+arma(colt) :-
+        nl,
+        write('arma estardalhante a tambor'),nl,
+        write('essa arma causa um dano de: 15 pontos de vida'),nl,
+        nl.
 
+arma(glok) :-
+        nl,
+        write('arma tatica tipo pistola, leve, segura e com boa precisão'),nl,
+        write('essa arma causa um dano de: 25 pontos de vida'),nl,
+        nl.
+
+arma(ak-47) :-
+        nl,
+        write('arma de grande rusticidade, simplicidade de operacao e manutencao, muito estavel. Deixa a desejar nos requisitos precisao, ergonomia e peso'),nl,
+        write('essa arma causa um dano de: 50 pontos de vida'),nl,
+        nl.
+
+arma(fuzilar15) :-
+        nl,
+        write('melhor arma do mundo, porem de confiabilidade baixa'),nl,
+        write('essa arma causa um dano de: 75 pontos de vida'),nl,
+        nl.
 
 
 /* Equipamentos e HP*/
