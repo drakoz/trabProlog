@@ -1,6 +1,8 @@
 /* Arvore Genealogica de Familias da Mafia e simulador de combates */
 
-:- dynamic iniciar/1, meuPersonagem/1, oponente/1.
+:- abolish(meuPersonagem/1).
+
+:- dynamic iniciar/1, meuPersonagem/1, oponente/1, minhaVida/1,tuaVida.
 
 /* Debug de predicados dinamicos */
 
@@ -8,7 +10,7 @@ debug :- listing(iniciar), listing(meuPersonagem), listing(oponente).
 
 /* Operadores */
 
-:-op(900,xfx,[tem, representa,eh]).
+:-op(900,xfx,[tem, representa,eh,equipa]).
 
 /* Loop recursivo para limpar a tela*/
 
@@ -98,20 +100,36 @@ membro(giuseppinaCordopatri) :-
 membro(mariellaCordopatri) :-
         nl,
         write('Voce eh Mariella Cordopatri, irma de Arcangelo, Mariella parece nao seguir os passos do irmao e fez sua fama como organizadora do maior torneio de Luta Livre Ilegal dos EUA'),nl,
-        write('Mariella Cordopatri luta com a mae e possui 300 pontos de vida'),nl,
+        write('Mariella Cordopatri luta com a mao e possui 300 pontos de vida'),nl,
         assert(meuPersonagem(mariellaCordopatri)),
         oponente(corleone),
         nl.
+
+/* Equipamentos e HP*/
+
+mariellaCordopatri equipa arma = 2.
+giuseppinaCordopatri equipa arma = 3.
+arcangeloCordopatri equipa arma = 4.
+michaelCorleone equipa arma = 3.
+carmellaCorleone equipa arma = 2.
+vitoCorleone equipa arma = 4.
+
+vitoCorleone tem vida = 150.
+carmellaCorleone tem vida = 200.
+michaelCorleone tem vida = 100.
+arcangeloCordopatri tem vida = 100.
+giuseppinaCordopatri tem vida = 150.
+mariellaCordopatri tem vida = 300.
 
 /* Gerando Oponente Randomico */
 
 oponente(corleone) :-
         X is random(3),
-        oponenteCorleone(X).
+        oponenteCorleone(X),!.
 
 oponente(cordopatri) :-
         X is random(3),
-        oponenteCordopatri(X).
+        oponenteCordopatri(X),!.
 
 /* Oponente Cordopatri */
 
@@ -128,21 +146,122 @@ oponenteCordopatri(2):-
         combate(X,mariellaCordopatri).
 
 
+
 /* Oponente Corleone */
 
-oponenteCordopatri(0):-
+oponenteCorleone(0):-
         meuPersonagem(X),
         combate(X,vitoCorleone).
 
-oponenteCordopatri(1):-
+oponenteCorleone(1):-
         meuPersonagem(X),
         combate(X,carmellaCorleone).
 
-oponenteCordopatri(2):-
+oponenteCorleone(2):-
         meuPersonagem(X),
         combate(X,michaelCorleone).
 
-combate(X,Y).
+combate(X,Y):-
+        sleep(5),nl,nl,
+        write('O q eh isso?!?!'),nl,nl,
+        sleep(2),
+        write('Puff...'),nl,nl,
+        sleep(2),
+        write('~Alguem estah se aproximando~'),nl,nl,
+        sleep(2),
+        write(Y),write(':'),nl,nl,sleep(2),
+        write('Ora Ora, olha quem eu encontrei!!!'),nl,nl,
+        sleep(2),
+        write('Prepare-se para lutar.'),nl,nl,
+        X tem vida = Z,
+        Y tem vida = W,
+        X equipa arma = K,
+        Y equipa arma = J,
+        /*assert(minhaVida(Z)),*/
+        /*assert(tuaVida(W)),*/
+        luta(Z,K,W,J).
+
+
+luta(Z,K,W,J) :-
+        Z > 0, W > 0,
+        Wnovo is W - ((random(25)*K) + 1),
+        commenteu(Wnovo),
+        Znovo is Z - ((random(25))*J + 1),
+        commentvoce(Znovo),
+        luta(Znovo,K,Wnovo,J).
+
+luta(Z,_,_,_):-
+        Z =< 0,
+        nl,nl,write('Ohh q pena..'),nl,nl,
+        sleep(2),
+        write('Voce estah sem forcas para lutar mais'),nl,nl,
+        sleep(3),
+        write('Seu oponente percebe e te deixa fugir'),nl,nl,fim.
+
+luta(_,_,W,_):-
+        W =< 0,
+        nl,nl,write('Raaaa...'),nl,nl,
+        sleep(2),
+        write('Voce percebe que seu oponente estah fraco demais para lutar'),nl,nl,
+        sleep(2),
+        write('decisao(a). para deixa-lo fugir e decisao(b). para mata-lo'),nl,nl,!.
+
+commenteu(X):-
+        X > 0,
+        sleep(2),nl,nl,
+        write('Voce desfere um golpe certeiro...'),nl,
+        sleep(2),
+        write('Seu oponente estah com '),write(X),write(' pontos de vida'),nl,nl,
+        sleep(3),!.
+
+commenteu(X):-
+        X =< 0,
+        sleep(2),nl,nl,
+        write('Voce o atingiu brutalmente...'),nl,
+        sleep(2),
+        write('Seu oponente estah com '),write('1'),write(' ponto de vida'),nl,nl,
+        sleep(3),!.
+
+commentvoce(X):-
+        X > 0,
+        sleep(2),nl,nl,
+        write('Voce tenta bloquear o ataque do seu oponente...mas falha'),nl,
+        sleep(2),
+        write('Voce estah com '),write(X),write(' pontos de vida'),nl,nl,
+        sleep(3),!.
+
+commentvoce(X):-
+        X =< 0,
+        sleep(2),nl,nl,
+        write('Voce eh atingido brutalmente'),nl,
+        sleep(2),
+        write('Voce estah com '),write('1'),write(' ponto de vida'),nl,nl,
+        sleep(3),!.
+
+
+
+
+decisao(a):-
+        write('Voce se aproxima de seu oponente'),nl,nl,
+        sleep(2),
+        write('Voce consegue sentir o medo em seus olhos'),nl,nl,
+        sleep(2),
+        write('Ele foge... mas parece que nunca mais ira te perseguir'),nl,nl,fim.
+
+decisao(b):-
+        write('Voce se aproxima de seu oponente'),nl,nl,
+        sleep(2),
+        write('Voce consegue sentir o medo em seus olhos'),nl,nl,
+        sleep(2),
+        write('Voce sem doh nem piedade desfere um golpe fatal... definitivamente ele nao ira mais te incomodar'),nl,nl,fim.
+
+fim :-
+write('.~NNMMMMNN$.MMN. ~MM?.:MMNDNNN$    .ZMMMDNNN:.8MMD..MMM:IMMMDMMM=. '),nl,
+write('   .7MMM   .MMM?+IMM?.:MM+         .ZMMD     .8MMMM:MMM:IMMM..IMM: '),nl,
+write('   .7MMM   .MMMMMMMM?.:MMMMMMM=    .ZMMMMMMM..8M$DMMMMM:IMMM..+MM~ '),nl,
+write('   .7MMM   .MMN..:MM?.:MM?   ..    .ZMMN  ....8M7.OMMMM:IMMM..7MN, '),nl,
+write('   .7MMM   .MMN. ~MM?.:MMMMMMMN    .ZMMMMMMM+.8M7..=MMM:IMMMMMMM:. '),nl,!.
+
 
 
 
@@ -156,8 +275,12 @@ start :-
 
 
 
-/*
-/* Familia Corleone */
+
+
+/* BONUS */
+/* Arvore Genealogica das duas familias */
+
+/* Familia Corleone e Familia Cordopatri*/
 
 ascendente(vitoCorleone,michaelCorleone).
 ascendente(carmellaCorleone,michaelCorleone).
@@ -165,30 +288,6 @@ ascendente(vitoCorleone,sonnyCorleone).
 ascendente(carmellaCorleone,sonnyCorleone).
 ascendente(sonnyCorleone,dominicCorleone).
 ascendente(michaelCorleone,fredoCorleone).
-
-vitoCorleone eh homem.
-carmellaCorleone eh mulher.
-michaelCorleone eh homem.
-sonnyCorleone eh mulher.
-dominicCorleone eh mulher.
-fredoCorleone eh homem.
-
-vitoCorleone representa FamiliaCorleone.
-carmellaCorleone representa FamiliaCorleone.
-michaelCorleone representa FamiliaCorleone.
-sonnyCorleone representa FamiliaCorleone.
-dominicCorleone representa FamiliaCorleone.
-fredoCorleone representa FamiliaCorleone.
-
-vitoCorleone tem glock.
-vitoCorleone tem vida = 100.
-carmellaCorleone tem faca.
-carmellaCorleone tem vida = 100.
-
-vitoCorleone tem aparencia = ('oasjdasd',nl,'akadkas').
-
-/* Familia Cordopatri */
-
 ascendente(arcangeloCordopatri,giuseppinaCordopatri).
 ascendente(mariellaCordopatri,giuseppinaCordopatri).
 ascendente(arcangeloCordopatri,francescoCordopatri).
@@ -202,25 +301,13 @@ mariellaCordopatri eh mulher.
 francescoCordopatri eh homem.
 avoccatoCordopatri eh homem.
 lauraCordopatri eh mulher.
+vitoCorleone eh homem.
+carmellaCorleone eh mulher.
+michaelCorleone eh homem.
+sonnyCorleone eh mulher.
+dominicCorleone eh mulher.
+fredoCorleone eh homem.
 
-arcangeloCordopatri representa FamiliaCordopatri.
-giuseppinaCordopatri representa FamiliaCordopatri.
-mariellaCordopatri representa FamiliaCordopatri.
-francescoCordopatri representa FamiliaCordopatri.
-avoccatoCordopatri representa FamiliaCordopatri.
-lauraCordopatri representa FamiliaCordopatri.
-
-arcangeloCordopatri tem taurus.
-arcangeloCordopatri tem vida = 100.
-giuseppinaCordopatri tem adaga.
-giuseppinaCordopatri tem vida = 100.
-
-/* Armas */
-
-glock tem dano = 3.
-faca tem dano = 1.5.
-adaga tem dano = 1.5.
-taurus tem dano = 2.5.
 
 /* Regras de Genealogia */
 
@@ -232,24 +319,6 @@ filho(X,Y):- X eh homem, ascendente(Y,X).
 filha(X,Y):- X eh mulher, ascendente(Y,X).
 neto(X,Y):- X eh homem, (avo_f(Y,X);avo_m(Y,X)).
 neta(X,Y):- X eh mulher, (avo_f(Y,X);avo_m(Y,X)).
-
-/* Funções */
-
-
-/* Combate */
-
-/* combate(X,Y) :- write(X),write('                        '),write(Y),nl,nl, */
-/*               write('\o/'),write('                            '),write('\o/'),nl. */
-
-
-
-combate(X,Y) :- clear(5),sleep(3),write(X),sleep(2),clear(5).*/
-
-
-
-
-
-
 
 
 
