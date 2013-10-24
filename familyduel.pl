@@ -130,15 +130,15 @@ oponenteCordopatri(2):-
 
 /* Oponente Corleone */
 
-oponenteCordopatri(0):-
+oponenteCorleone(0):-
         meuPersonagem(X),
         combate(X,vitoCorleone).
 
-oponenteCordopatri(1):-
+oponenteCorleone(1):-
         meuPersonagem(X),
         combate(X,carmellaCorleone).
 
-oponenteCordopatri(2):-
+oponenteCorleone(2):-
         meuPersonagem(X),
         combate(X,michaelCorleone).
 
