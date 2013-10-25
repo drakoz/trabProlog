@@ -55,6 +55,9 @@ familia(corleone) :-
         write('membro(michaelCorleone).'),nl,
         nl.
 
+corleone tem vida = 300.
+cordopatri tem vida = 300.
+
 /* membros */
 
 membro(vitoCorleone) :-
@@ -188,12 +191,12 @@ michaelCorleone equipa arma = 3.
 carmellaCorleone equipa arma = 2.
 vitoCorleone equipa arma = 4.
 
-vitoCorleone tem vida = 300.
+/*vitoCorleone tem vida = 300.
 carmellaCorleone tem vida = 300.
 michaelCorleone tem vida = 300.
 arcangeloCordopatri tem vida = 300.
 giuseppinaCordopatri tem vida = 300.
-mariellaCordopatri tem vida = 300.
+mariellaCordopatri tem vida = 300.*/
 
 /* Gerando Oponente Randomico */
 /*x = personagemEscolhido*/
