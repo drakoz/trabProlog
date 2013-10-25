@@ -1,6 +1,6 @@
 ﻿/* Arvore Genealogica de Familias da Mafia e simulador de combates */
 
-:- abolish(meuPersonagem/1).
+:- abolish(meuPersonagem/1, minhaVida/1).
 
 :- dynamic iniciar/1, meuPersonagem/1, oponente/1, minhaVida/1,tuaVida.
 
@@ -152,28 +152,34 @@ arma(colt) :-
         nl,
         write('arma estardalhante a tambor'),nl,
         write('essa arma causa um dano de: 15 pontos de vida'),nl,
+	assert(minhaVida(tem vida - 25)),nl,
         nl.
 
 arma(glok) :-
         nl,
         write('arma tatica tipo pistola, leve, segura e com boa precisão'),nl,
         write('essa arma causa um dano de: 25 pontos de vida'),nl,
+	assert(minhaVida(tem vida - 50)),nl,
         nl.
 
 arma(ak-47) :-
         nl,
         write('arma de grande rusticidade, simplicidade de operacao e manutencao, muito estavel. Deixa a desejar nos requisitos precisao, ergonomia e peso'),nl,
         write('essa arma causa um dano de: 50 pontos de vida'),nl,
+	assert(minhaVida(tem vida - 100)),nl,
         nl.
 
 arma(fuzilar15) :-
         nl,
         write('melhor arma do mundo, porem de confiabilidade baixa'),nl,
         write('essa arma causa um dano de: 75 pontos de vida'),nl,
+	assert(minhaVida(tem vida - 150)),nl,
         nl.
 
 
 /* Equipamentos e HP*/
+
+
 
 mariellaCordopatri equipa arma = 2.
 giuseppinaCordopatri equipa arma = 3.
@@ -190,46 +196,48 @@ giuseppinaCordopatri tem vida = 300.
 mariellaCordopatri tem vida = 300.
 
 /* Gerando Oponente Randomico */
+/*x = personagemEscolhido*/
+
 
 oponente(corleone) :-
-        X is random(3),
-        oponenteCorleone(X),!.
+        personagemGerado is random(3),
+        oponenteCorleone(personagemGerado),!.
 
 oponente(cordopatri) :-
-        X is random(3),
-        oponenteCordopatri(X),!.
+        personagemGerado is random(3),
+        oponenteCordopatri(personagemGerado),!.
 
 /* Oponente Cordopatri */
 
 oponenteCordopatri(0):-
-        meuPersonagem(X),
-        combate(X,arcangeloCordopatri).
+        meuPersonagem(personagemEscolhido),
+        combate(personagemEscolhido,arcangeloCordopatri).
 
 oponenteCordopatri(1):-
-        meuPersonagem(X),
-        combate(X,mariellaCordopatri).
+        meuPersonagem(personagemEscolhido),
+        combate(personagemEscolhido,mariellaCordopatri).
 
 oponenteCordopatri(2):-
-        meuPersonagem(X),
-        combate(X,mariellaCordopatri).
+        meuPersonagem(personagemEscolhido),
+        combate(personagemEscolhido,mariellaCordopatri).
 
 
 
 /* Oponente Corleone */
 
 oponenteCorleone(0):-
-        meuPersonagem(X),
-        combate(X,vitoCorleone).
+        meuPersonagem(personagemEscolhido),
+        combate(personagemEscolhido,vitoCorleone).
 
 oponenteCorleone(1):-
-        meuPersonagem(X),
-        combate(X,carmellaCorleone).
+        meuPersonagem(personagemEscolhido),
+        combate(personagemEscolhido,carmellaCorleone).
 
 oponenteCorleone(2):-
-        meuPersonagem(X),
-        combate(X,michaelCorleone).
+        meuPersonagem(personagemEscolhido),
+        combate(personagemEscolhido,michaelCorleone).
 
-combate(X,Y):-
+combate(personagemEscolhido,Y):-
         sleep(5),nl,nl,
         write('O q eh isso?!?!'),nl,nl,
         sleep(2),
@@ -241,9 +249,9 @@ combate(X,Y):-
         write('Ora Ora, olha quem eu encontrei!!!'),nl,nl,
         sleep(2),
         write('Prepare-se para lutar.'),nl,nl,
-        X tem vida = Z,
+        personagemEscolhido tem vida = Z,
         Y tem vida = W,
-        X equipa arma = K,
+        personagemEscolhido equipa arma = K,
         Y equipa arma = J,
         /*assert(minhaVida(Z)),*/
         /*assert(tuaVida(W)),*/
