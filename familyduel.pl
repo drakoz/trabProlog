@@ -60,7 +60,7 @@ familia(corleone) :-
 membro(vitoCorleone) :-
         nl,
         write('Voce eh Vito Corleone, conhecido como Don Corleone, poderoso chefao da mafia Corleone'),nl,
-        write('Vito Corleone possui uma pistola Glock e 150 Pontos de Vida'),nl,
+        write('Vito Corleone possui 150 Pontos de Vida'),nl,
         assert(meuPersonagem(vitoCorleone)),
 	write('Escolha sua arma:'),nl,
 	write('arma(porrada).'),nl,
@@ -74,7 +74,7 @@ membro(vitoCorleone) :-
 membro(carmellaCorleone) :-
         nl,
         write('Voce eh Carmella Corleone, mulher e braço direitoo de Vito Corleone, tambem conhecida como chefinha'),nl,
-        write('Carmela Corleone possui uma faca e 200 pontos de vida'),nl,
+        write('Carmela Corleone possui 200 pontos de vida'),nl,
         assert(meuPersonagem(carmellaCorleone)),
 	write('Escolha sua arma:'),nl,
 	write('arma(porrada).'),nl,
@@ -88,7 +88,7 @@ membro(carmellaCorleone) :-
 membro(michaelCorleone) :-
         nl,
         write('Voce eh Michael Corleone, filho de Carmella e Vito, Michael eh o menino de ouro da Mafia Corleone'),nl,
-        write('Michael Corleone possui uma pistola Colt e 100 pontos de vida'),nl,
+        write('Michael Corleone possui 100 pontos de vida'),nl,
         assert(meuPersonagem(michaelCorleone)),
 	write('Escolha sua arma:'),nl,
 	write('arma(porrada).'),nl,
@@ -102,7 +102,7 @@ membro(michaelCorleone) :-
 membro(arcangeloCordopatri) :-
         nl,
         write('Voce eh Arcangelo Cordopatri, Italiano que aos 30 anos foi para os Estados Unidos e hoje eh conhecido como Mestre das Armas'),nl,
-        write('Arcangelo Cordopatri possui uma AK-47 e 100 pontos de vida'),nl,
+        write('Arcangelo Cordopatri possui 100 pontos de vida'),nl,
         assert(meuPersonagem(arcangeloCordopatri)),
 	write('Escolha sua arma:'),nl,
 	write('arma(porrada).'),nl,
@@ -116,7 +116,7 @@ membro(arcangeloCordopatri) :-
 membro(giuseppinaCordopatri) :-
         nl,
         write('Voce eh Giuseppina Cordopatri, que ainda mantém o renomado nome da familia Cordopatri, dominando o cartel de armas na Italia'),nl,
-        write('Giuseppina Cordopatri possui uma pistola Colt e 150 pontos de vida'),nl,
+        write('Giuseppina Cordopatri possui 150 pontos de vida'),nl,
         assert(meuPersonagem(giuseppinaCordopatri)),
 	write('Escolha sua arma:'),nl,
 	write('arma(porrada).'),nl,
@@ -130,7 +130,7 @@ membro(giuseppinaCordopatri) :-
 membro(mariellaCordopatri) :-
         nl,
         write('Voce eh Mariella Cordopatri, irma de Arcangelo, Mariella parece nao seguir os passos do irmao e fez sua fama como organizadora do maior torneio de Luta Livre Ilegal dos EUA'),nl,
-        write('Mariella Cordopatri luta com a mao e possui 300 pontos de vida'),nl,
+        write('Mariella Cordopatri possui 300 pontos de vida'),nl,
         assert(meuPersonagem(mariellaCordopatri)),
 	write('Escolha sua arma:'),nl,
 	write('arma(porrada).'),nl,
@@ -182,11 +182,11 @@ michaelCorleone equipa arma = 3.
 carmellaCorleone equipa arma = 2.
 vitoCorleone equipa arma = 4.
 
-vitoCorleone tem vida = 150.
-carmellaCorleone tem vida = 200.
-michaelCorleone tem vida = 100.
-arcangeloCordopatri tem vida = 100.
-giuseppinaCordopatri tem vida = 150.
+vitoCorleone tem vida = 300.
+carmellaCorleone tem vida = 300.
+michaelCorleone tem vida = 300.
+arcangeloCordopatri tem vida = 300.
+giuseppinaCordopatri tem vida = 300.
 mariellaCordopatri tem vida = 300.
 
 /* Gerando Oponente Randomico */
