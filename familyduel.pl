@@ -1,6 +1,8 @@
 ﻿/* Arvore Genealogica de Familias da Mafia e simulador de combates */
 
-:- abolish(meuPersonagem/1, minhaVida/1).
+:- abolish(meuPersonagem/1).
+:- abolish(minhaVida/1).
+
 
 :- dynamic iniciar/1, meuPersonagem/1, oponente/1, minhaVida/1,tuaVida.
 
@@ -199,48 +201,48 @@ giuseppinaCordopatri tem vida = 300.
 mariellaCordopatri tem vida = 300.*/
 
 /* Gerando Oponente Randomico */
-/*x = personagemEscolhido*/
+/*x = PersonagemEscolhido*/
 
 
 oponente(corleone) :-
-        personagemGerado is random(3),
-        oponenteCorleone(personagemGerado),!.
+        PersonagemGerado is random(3),
+        oponenteCorleone(PersonagemGerado),!.
 
 oponente(cordopatri) :-
-        personagemGerado is random(3),
-        oponenteCordopatri(personagemGerado),!.
+        PersonagemGerado is random(3),
+        oponenteCordopatri(PersonagemGerado),!.
 
 /* Oponente Cordopatri */
 
 oponenteCordopatri(0):-
-        meuPersonagem(personagemEscolhido),
-        combate(personagemEscolhido,arcangeloCordopatri).
+        meuPersonagem(PersonagemEscolhido),
+        combate(PersonagemEscolhido,arcangeloCordopatri).
 
 oponenteCordopatri(1):-
-        meuPersonagem(personagemEscolhido),
-        combate(personagemEscolhido,giuseppinaCordopatri).
+        meuPersonagem(PersonagemEscolhido),
+        combate(PersonagemEscolhido,giuseppinaCordopatri).
 
 oponenteCordopatri(2):-
-        meuPersonagem(personagemEscolhido),
-        combate(personagemEscolhido,mariellaCordopatri).
+        meuPersonagem(PersonagemEscolhido),
+        combate(PersonagemEscolhido,mariellaCordopatri).
 
 
 
 /* Oponente Corleone */
 
 oponenteCorleone(0):-
-        meuPersonagem(personagemEscolhido),
-        combate(personagemEscolhido,vitoCorleone).
+        meuPersonagem(PersonagemEscolhido),
+        combate(PersonagemEscolhido,vitoCorleone).
 
 oponenteCorleone(1):-
-        meuPersonagem(personagemEscolhido),
-        combate(personagemEscolhido,carmellaCorleone).
+        meuPersonagem(PersonagemEscolhido),
+        combate(PersonagemEscolhido,carmellaCorleone).
 
 oponenteCorleone(2):-
-        meuPersonagem(personagemEscolhido),
-        combate(personagemEscolhido,michaelCorleone).
+        meuPersonagem(PersonagemEscolhido),
+        combate(PersonagemEscolhido,michaelCorleone).
 
-combate(personagemEscolhido,Y):-
+combate(PersonagemEscolhido,Y):-
         sleep(5),nl,nl,
         write('O q eh isso?!?!'),nl,nl,
         sleep(2),
@@ -252,9 +254,9 @@ combate(personagemEscolhido,Y):-
         write('Ora Ora, olha quem eu encontrei!!!'),nl,nl,
         sleep(2),
         write('Prepare-se para lutar.'),nl,nl,
-        personagemEscolhido tem vida = Z,
+        PersonagemEscolhido tem vida = Z,
         Y tem vida = W,
-        personagemEscolhido equipa arma = K,
+        PersonagemEscolhido equipa arma = K,
         Y equipa arma = J,
         /*assert(minhaVida(Z)),*/
         /*assert(tuaVida(W)),*/
