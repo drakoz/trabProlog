@@ -6,6 +6,8 @@
 
 :- dynamic iniciar/1, meuPersonagem/1, oponente/1, minhaVida/1,tuaVida.
 
+minhaVida(300).
+
 /* Debug de predicados dinamicos */
 
 debug :- listing(iniciar), listing(meuPersonagem), listing(oponente).
@@ -57,8 +59,6 @@ familia(corleone) :-
         write('membro(michaelCorleone).'),nl,
         nl.
 
-corleone tem vida = 300.
-cordopatri tem vida = 300.
 
 /* membros */
 
@@ -157,28 +157,28 @@ arma(colt) :-
         nl,
         write('arma estardalhante a tambor'),nl,
         write('essa arma causa um dano de: 15 pontos de vida'),nl,
-	assert(minhaVida(tem vida - 25)),nl,
+	assert(minhaVida(300 - 25)),nl,
         nl.
 
 arma(glok) :-
         nl,
         write('arma tatica tipo pistola, leve, segura e com boa precisão'),nl,
         write('essa arma causa um dano de: 25 pontos de vida'),nl,
-	assert(minhaVida(tem vida - 50)),nl,
+	assert(minhaVida(300 - 50)),nl,
         nl.
 
 arma(ak-47) :-
         nl,
         write('arma de grande rusticidade, simplicidade de operacao e manutencao, muito estavel. Deixa a desejar nos requisitos precisao, ergonomia e peso'),nl,
         write('essa arma causa um dano de: 50 pontos de vida'),nl,
-	assert(minhaVida(tem vida - 100)),nl,
+	assert(minhaVida(300 - 100)),nl,
         nl.
 
 arma(fuzilar15) :-
         nl,
         write('melhor arma do mundo, porem de confiabilidade baixa'),nl,
         write('essa arma causa um dano de: 75 pontos de vida'),nl,
-	assert(minhaVida(tem vida - 150)),nl,
+	assert(minhaVida(300 - 150)),nl,
         nl.
 
 
@@ -254,7 +254,7 @@ combate(PersonagemEscolhido,Y):-
         write('Ora Ora, olha quem eu encontrei!!!'),nl,nl,
         sleep(2),
         write('Prepare-se para lutar.'),nl,nl,
-        PersonagemEscolhido tem vida = Z,
+        PersonagemEscolhido minhaVida(Z),
         Y tem vida = W,
         PersonagemEscolhido equipa arma = K,
         Y equipa arma = J,
