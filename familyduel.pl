@@ -207,7 +207,7 @@ oponenteCordopatri(0):-
 
 oponenteCordopatri(1):-
         meuPersonagem(X),
-        combate(X,mariellaCordopatri).
+        combate(X,giuseppinaCordopatri).
 
 oponenteCordopatri(2):-
         meuPersonagem(X),
