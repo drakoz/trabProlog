@@ -12,6 +12,13 @@ minhaVida(300).
 
 debug :- listing(iniciar), listing(meuPersonagem), listing(oponente).
 
+var teste = function () {
+  Router.route('/',{
+    name : 'teste',
+    data : function (arg) { return Posts.find({data:});}
+  });
+}
+
 /* Operadores */
 
 :-op(900,xfx,[tem, representa,eh,equipa]).
@@ -401,4 +408,3 @@ filho(X,Y):- X eh homem, ascendente(Y,X).
 filha(X,Y):- X eh mulher, ascendente(Y,X).
 neto(X,Y):- X eh homem, (avo_f(Y,X);avo_m(Y,X)).
 neta(X,Y):- X eh mulher, (avo_f(Y,X);avo_m(Y,X)).
-
